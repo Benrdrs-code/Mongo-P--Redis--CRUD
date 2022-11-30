@@ -130,4 +130,4 @@ while loop:
                     deletarCompra.deletarCompra(meuBanco)
                 case '0':
                     loop = False
-        
+                    

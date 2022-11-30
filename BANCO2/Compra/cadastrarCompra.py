@@ -20,5 +20,6 @@ def cadastrarCompra (meuBanco):
     },}
 
     x =  minhaColuna.insert_one(meuDicionario)
-
-    print(x.inserted_id)
+    
+    (print(x.inserted_id))
+    
