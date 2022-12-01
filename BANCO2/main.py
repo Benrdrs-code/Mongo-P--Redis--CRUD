@@ -16,12 +16,12 @@ import Compra.cadastrarCompra as cadastrarCompra
 import Compra.buscarCompra as buscarCompra
 import Compra.atualizarCompra as atualizarCompra
 import Compra.deletarCompra as deletarCompra
-import redis
-from direct_redis import DirectRedis
-
+import createjson.mongo_json_compra as mjc
+import createjson.mongo_json_vendedor as mjv
+import createjson.mongo_json_usuario as mju
+import createjson.mongo_json_produto as mjp
 
 cliente =  pymongo.MongoClient('mongodb://localhost:27017')
-meuBanco = DirectRedis(host='localhost', port=6379, db=0)
 
 meuBanco = cliente.bancoNAME
 loop = True
@@ -47,14 +47,17 @@ while loop:
             match opcaoUsuario:
                 case '1':
                     cadastrarUsuario.cadastrarUsuario(meuBanco)
+                    mju.create_json()
                 case '2':
                     atualizarUsuario.atualizarUsuario(meuBanco)
+                    mju.create_json()
                 case '3':
                     buscarUsuario.procurarUsuario(meuBanco)
                 case '4':
                     buscarUsuario.procurarTodesUsuario(meuBanco)
                 case '5':
                     deletarUsuario.deletarUsuario(meuBanco)
+                    mju.create_json()
                 case '0':
                     loop = False
 
@@ -71,14 +74,17 @@ while loop:
             match opcaoProduto:
                 case '1':
                     cadastrarProduto.cadastrarProduto(meuBanco)
+                    mjp.create_json()
                 case '2':
                     atualizarProduto.atualizarProduto(meuBanco)
+                    mjp.create_json()
                 case '3':
                     buscarProduto.procurarProduto(meuBanco)
                 case '4':
                     buscarProduto.procurarTodesProduto(meuBanco)
                 case '5':
                     deletarProduto.deletarProduto(meuBanco)
+                    mjp.create_json()
                 case '0':
                     loop = False
                 
@@ -95,14 +101,17 @@ while loop:
             match opcaoVendedor:
                 case '1':
                     cadastrarVendedor.cadastrarVendedor(meuBanco)
+                    mjv.create_json()
                 case '2':
                     atualizarVendedor.atualizarVendedor(meuBanco)
+                    mjv.create_json()
                 case '3':
-                    buscarVendedor.procurarVendedor(meuBanco)
+                    buscarVendedor.procurarVendedor(meuBanco)     
                 case '4':
                     buscarVendedor.procurarTodesVendedor(meuBanco)
                 case '5':
                     deletarVendedor.deletarVendedor(meuBanco)
+                    mjv.create_json()
                 case '0':
                     loop = False
         
@@ -120,14 +129,17 @@ while loop:
             match opcaoCompra:
                 case '1':
                     cadastrarCompra.cadastrarCompra(meuBanco)
+                    mjc.create_json()
                 case '2':
                     atualizarCompra.atualizarCompra(meuBanco)
+                    mjc.create_json()
                 case '3':
                     buscarCompra.procurarCompra(meuBanco)
                 case '4':
                     buscarCompra.procurarTodesCompra(meuBanco)
                 case '5':
                     deletarCompra.deletarCompra(meuBanco)
+                    mjc.create_json()
                 case '0':
                     loop = False
                     
