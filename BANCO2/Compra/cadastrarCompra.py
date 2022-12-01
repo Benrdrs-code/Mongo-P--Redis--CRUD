@@ -23,3 +23,4 @@ def cadastrarCompra (meuBanco):
     
     (print(x.inserted_id))
     
+   
